@@ -1,0 +1,760 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TokenVector.Text</name>
+    </assembly>
+    <members>
+        <member name="T:TokenVector.Text.Algorithms.BM25Vectorizer">
+            <summary>
+            High-performance BM25 sparse vectorizer and relevance ranker for Hybrid Search &amp; RAG.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Algorithms.BM25Vectorizer.Fit(System.Collections.Generic.IEnumerable{System.ReadOnlyMemory{System.Int32}})">
+            <summary>
+            Fits and indexes a corpus of tokenized documents.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Algorithms.BM25Vectorizer.Score(System.ReadOnlySpan{System.Int32})">
+            <summary>
+            Computes BM25 relevance scores for all documents given a query token array.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Algorithms.BM25Vectorizer.QueryTopK(System.ReadOnlySpan{System.Int32},System.Int32)">
+            <summary>
+            Finds top-K most relevant document indices for a query.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Algorithms.MinHash">
+            <summary>
+            MinHash locality-sensitive hashing for estimating Jaccard similarity and document deduplication.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Algorithms.MinHash.ComputeSignature(System.ReadOnlySpan{System.Int32})">
+            <summary>
+            Computes MinHash signature array for a token sequence.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Algorithms.MinHash.JaccardSimilarity(System.ReadOnlySpan{System.UInt32},System.ReadOnlySpan{System.UInt32})">
+            <summary>
+            Computes estimated Jaccard similarity between two MinHash signatures.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.ITokenizer">
+            <summary>
+            Unified interface for high-performance zero-allocation tokenizers in TokenVector.Text.
+            </summary>
+        </member>
+        <member name="P:TokenVector.Text.ITokenizer.Vocab">
+            <summary>
+            Vocabulary table associated with this tokenizer.
+            </summary>
+        </member>
+        <member name="P:TokenVector.Text.ITokenizer.SpecialTokens">
+            <summary>
+            Set of registered special tokens and their assigned IDs.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.ITokenizer.Encode(System.ReadOnlySpan{System.Char},System.Boolean)">
+            <summary>
+            Encodes a text character span into token IDs and metadata.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.ITokenizer.EncodeUtf8(System.ReadOnlySpan{System.Byte},System.Boolean)">
+            <summary>
+            Encodes raw UTF-8 byte span into token IDs and metadata.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.ITokenizer.EncodeBatch(System.ReadOnlySpan{System.String},System.Int32,TokenVector.Text.Models.PaddingStrategy,TokenVector.Text.Models.TruncationStrategy)">
+            <summary>
+            Batch encodes multiple text sequences into an unmanaged tensor-backed BatchEncodingResult.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.ITokenizer.EncodeToTensor(System.ReadOnlySpan{System.String},System.Int32)">
+            <summary>
+            Direct zero-copy export of tokenized input IDs into a TokenVector.Numerics NDArray[Batch, SeqLen].
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.ITokenizer.Decode(System.ReadOnlySpan{System.Int32},System.Boolean)">
+            <summary>
+            Decodes an array or span of token IDs back into text.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.ITokenizer.DecodeUtf8(System.ReadOnlySpan{System.Int32},System.Buffers.IBufferWriter{System.Byte},System.Boolean)">
+            <summary>
+            Decodes token IDs directly into a byte buffer writer without allocating managed strings.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Models.BatchEncodingResult">
+            <summary>
+            Result of batch encoding sequences directly mapped to TokenVector.Numerics NDArray tensors.
+            </summary>
+        </member>
+        <member name="P:TokenVector.Text.Models.BatchEncodingResult.InputIds">
+            <summary>
+            Tensor of shape [BatchSize, SequenceLength] containing token IDs.
+            </summary>
+        </member>
+        <member name="P:TokenVector.Text.Models.BatchEncodingResult.AttentionMask">
+            <summary>
+            Tensor of shape [BatchSize, SequenceLength] containing 1s for real tokens and 0s for padding.
+            </summary>
+        </member>
+        <member name="P:TokenVector.Text.Models.BatchEncodingResult.PositionIds">
+            <summary>
+            Optional Tensor of shape [BatchSize, SequenceLength] containing position indices.
+            </summary>
+        </member>
+        <member name="P:TokenVector.Text.Models.BatchEncodingResult.TokenTypeIds">
+            <summary>
+            Optional Tensor of shape [BatchSize, SequenceLength] containing segment type IDs.
+            </summary>
+        </member>
+        <member name="P:TokenVector.Text.Models.BatchEncodingResult.Encodings">
+            <summary>
+            Individual encoding results for each sequence in the batch.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Models.EncodingResult">
+            <summary>
+            Result of encoding a single text sequence.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Models.PaddingStrategy">
+            <summary>
+            Strategy for sequence padding in batch operations.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Models.PaddingDirection">
+            <summary>
+            Direction to insert padding tokens.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Models.TruncationStrategy">
+            <summary>
+            Strategy for sequence truncation.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Models.TruncationDirection">
+            <summary>
+            Direction to truncate tokens.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Models.BpeOptions">
+            <summary>
+            Configuration options for BPE tokenizers.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Models.WordPieceOptions">
+            <summary>
+            Configuration options for WordPiece tokenizers (e.g., BERT).
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Models.UnigramOptions">
+            <summary>
+            Configuration options for Unigram tokenizers (e.g., SentencePiece, Gemma, T5).
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Models.Token">
+            <summary>
+            Represents an individual encoded token with text slice and offset tracking.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Pipeline.TensorBridge">
+            <summary>
+            High-performance zero-copy bridge between TokenVector.Text tokenized sequences and TokenVector.Numerics NDArray tensors.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Pipeline.TensorBridge.BuildBatchTensor(System.Collections.Generic.IReadOnlyList{TokenVector.Text.Models.EncodingResult},System.Int32,System.Int32,TokenVector.Text.Models.PaddingStrategy,TokenVector.Text.Models.TruncationStrategy,TokenVector.Text.Models.PaddingDirection)">
+            <summary>
+            Constructs a 2D NDArray[Batch, SeqLen] and BatchEncodingResult from encoded sequences.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Presets.ModelPresets">
+            <summary>
+            Pre-built tokenizer factories for industry standard LLMs and transformer architectures.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Presets.ModelPresets.CreateGpt4">
+            <summary>
+            Creates a GPT-4 / GPT-3.5 (cl100k_base) compatible BPE tokenizer with base byte tokens and common subwords.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Presets.ModelPresets.CreateLlama3">
+            <summary>
+            Creates a Meta LLaMA-3 (128k) compatible BPE tokenizer preset.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Presets.ModelPresets.CreateBert">
+            <summary>
+            Creates a BERT (bert-base-uncased) compatible WordPiece tokenizer preset.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Streaming.IncrementalDecoder">
+            <summary>
+            High-performance stateful streaming decoder for LLM generation.
+            Uses .NET stateful UTF-8 Decoder to buffer partial multi-byte UTF-8 sequences across streaming tokens.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Streaming.IncrementalDecoder.DecodeToken(System.Int32)">
+            <summary>
+            Processes a single incoming token ID and returns any completed decoded text (or string.Empty if waiting for more bytes).
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Streaming.IncrementalDecoder.Flush">
+            <summary>
+            Flushes any remaining bytes in the decoder and resets state.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Streaming.IncrementalDecoder.Reset">
+            <summary>
+            Resets the decoder state.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Templates.ChatMessage">
+            <summary>
+            Represents a structured chat message with role and text content.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Templates.ChatTemplate">
+            <summary>
+            Pre-configured chat templates for formatting conversational messages into LLM input prompts.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Templates.ChatTemplate.Render(System.Collections.Generic.IEnumerable{TokenVector.Text.Templates.ChatMessage},System.Boolean)">
+            <summary>
+            Applies template to conversational messages and renders prompt string.
+            </summary>
+        </member>
+        <member name="P:TokenVector.Text.Templates.ChatTemplate.ChatML">
+            <summary>
+            ChatML format (&lt;|im_start|&gt;role\ncontent&lt;|im_end|&gt;) used by Qwen, Yi, DeepSeek, and OpenAI fine-tunes.
+            </summary>
+        </member>
+        <member name="P:TokenVector.Text.Templates.ChatTemplate.Llama3">
+            <summary>
+            Meta LLaMA-3 Instruct chat template.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Templates.SequencePairProcessor">
+            <summary>
+            Sequence pair post-processor for sentence pair classification and cross-encoder tasks (e.g. NLI, Q&amp;A, Re-ranking).
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Templates.SequencePairProcessor.EncodePair(TokenVector.Text.ITokenizer,System.ReadOnlySpan{System.Char},System.ReadOnlySpan{System.Char},System.Int32,System.Int32)">
+            <summary>
+            Combines two sequences into a single sequence pair with segment type IDs (0 for seqA, 1 for seqB).
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Tokenizer">
+            <summary>
+            Main factory and entry point for creating and loading tokenizers in TokenVector.Text.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Tokenizer.FromPretrained(System.String)">
+            <summary>
+            Loads a tokenizer from a Hugging Face tokenizer.json file or JSON string.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Tokenizer.CreateBpe(TokenVector.Text.Vocab.VocabTable,TokenVector.Text.Vocab.MergesTable,TokenVector.Text.Models.BpeOptions,TokenVector.Text.Vocab.SpecialTokenSet)">
+            <summary>
+            Creates a custom BPE tokenizer with given vocab and merges.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Tokenizer.CreateWordPiece(TokenVector.Text.Vocab.VocabTable,TokenVector.Text.Models.WordPieceOptions,TokenVector.Text.Vocab.SpecialTokenSet)">
+            <summary>
+            Creates a custom WordPiece tokenizer.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Tokenizer.CreateUnigram(TokenVector.Text.Vocab.UnigramModel,TokenVector.Text.Models.UnigramOptions,TokenVector.Text.Vocab.SpecialTokenSet)">
+            <summary>
+            Creates a custom Unigram tokenizer.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Tokenizer.CreateGpt4">
+            <summary>
+            Creates a GPT-4 / GPT-3.5 (cl100k_base) compatible BPE tokenizer preset.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Tokenizer.CreateLlama3">
+            <summary>
+            Creates a Meta LLaMA-3 (128k) compatible BPE tokenizer preset.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Tokenizer.CreateBert">
+            <summary>
+            Creates a BERT (bert-base-uncased) compatible WordPiece tokenizer preset.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Tokenizer.CreateVietnameseBpe">
+            <summary>
+            Creates a lightweight Vietnamese/Multilingual Byte-Level BPE tokenizer preset.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Tokenizers.BaseTokenizer">
+            <summary>
+            Abstract base class for high-performance zero-allocation tokenizers in TokenVector.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Tokenizers.BaseTokenizer.EncodeBatch(System.String[],System.Int32,TokenVector.Text.Models.PaddingStrategy,TokenVector.Text.Models.TruncationStrategy)">
+            <summary>
+            Parallel batch encoding overload for array of texts.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Tokenizers.Bpe.BpeTokenizer">
+            <summary>
+            Ultra high-performance Byte-Pair Encoding (BPE) tokenizer with zero-allocation stackalloc doubly-linked-list.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Tokenizers.Bpe.RegexPreTokenizer">
+            <summary>
+            Pre-tokenizer that splits input text using regex patterns compatible with GPT-4, GPT-2, and LLaMA.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Tokenizers.Bpe.RegexPreTokenizer.Gpt4GeneratedRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>(?i:'s|'t|'re|'ve|'m|'ll|'d)|[^\\r\\n\\p{L}\\p{N}]?\\p{L}+|\\p{N}{1,3}| ?[^\\s\\p{L}\\p{N}]+[\\r\\n]*|\\s*[\\r\\n]|\\s+(?!\\S)|\\s+</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match with 7 alternative expressions, atomically.<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match '\''.<br/>
+                    ○ Match with 6 alternative expressions, atomically.<br/>
+                        ○ Match a character in the set [STst].<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Rr].<br/>
+                            ○ Match a character in the set [Ee].<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [Vv].<br/>
+                            ○ Match a character in the set [Ee].<br/>
+                        ○ Match a character in the set [Mm].<br/>
+                        ○ Match a character in the set [Ll] exactly 2 times.<br/>
+                        ○ Match a character in the set [Dd].<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match a character in the set [^\n\r\p{L}\p{N}] greedily, optionally.<br/>
+                    ○ Match a character in the set [\p{L}] atomically at least once.<br/>
+                ○ Match a character in the set [\p{N}] atomically at least 1 and at most 3 times.<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match ' ' atomically, optionally.<br/>
+                    ○ Match a character in the set [^\s\p{L}\p{N}] greedily at least once.<br/>
+                    ○ Match a character in the set [\n\r] atomically any number of times.<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match a whitespace character greedily any number of times.<br/>
+                    ○ Match a character in the set [\n\r].<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match a whitespace character greedily at least once.<br/>
+                    ○ Zero-width negative lookahead.<br/>
+                        ○ Match any character other than a whitespace character.<br/>
+                ○ Match a whitespace character atomically at least once.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:TokenVector.Text.Tokenizers.Bpe.RegexPreTokenizer.Gpt2GeneratedRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>'s|'t|'re|'ve|'m|'ll|'d| ?\\p{L}+| ?\\p{N}+| ?[^\\s\\p{L}\\p{N}]+|\\s+(?!\\S)|\\s+</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match with 6 alternative expressions, atomically.<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match '\''.<br/>
+                    ○ Match with 6 alternative expressions, atomically.<br/>
+                        ○ Match a character in the set [st].<br/>
+                        ○ Match the string "re".<br/>
+                        ○ Match the string "ve".<br/>
+                        ○ Match 'm'.<br/>
+                        ○ Match the string "ll".<br/>
+                        ○ Match 'd'.<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match ' ' atomically, optionally.<br/>
+                    ○ Match a character in the set [\p{L}] atomically at least once.<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match ' ' atomically, optionally.<br/>
+                    ○ Match a character in the set [\p{N}] atomically at least once.<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match ' ' atomically, optionally.<br/>
+                    ○ Match a character in the set [^\s\p{L}\p{N}] atomically at least once.<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match a whitespace character greedily at least once.<br/>
+                    ○ Zero-width negative lookahead.<br/>
+                        ○ Match any character other than a whitespace character.<br/>
+                ○ Match a whitespace character atomically at least once.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:TokenVector.Text.Tokenizers.Bpe.RegexPreTokenizer.SimpleGeneratedRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>\\w+|[^\\w\\s]|\\s+</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match with 3 alternative expressions, atomically.<br/>
+                ○ Match a word character atomically at least once.<br/>
+                ○ Match a character in the set [^\w\s].<br/>
+                ○ Match a whitespace character atomically at least once.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:TokenVector.Text.Tokenizers.Bpe.RegexPreTokenizer.Matches(System.String)">
+            <summary>
+            Enumerates matches over input text string.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Tokenizers.Bpe.RegexPreTokenizer.EnumerateMatches(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Enumerates matches zero-allocation over ReadOnlySpan in .NET 8.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Tokenizers.Unigram.UnigramTokenizer">
+            <summary>
+            High-performance Unigram tokenizer utilizing Viterbi dynamic programming (SentencePiece / T5 / Gemma).
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Tokenizers.WordPiece.WordPieceTokenizer">
+            <summary>
+            High-performance WordPiece tokenizer fully compatible with BERT, DistilBERT, and RoBERTa architectures.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Training.BpeTrainer">
+            <summary>
+            High-performance Byte-Pair Encoding (BPE) vocabulary trainer.
+            Learns optimal subwords from raw text corpora and exports industry-standard tokenizer.json format.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Training.BpeTrainer.Train(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Trains a BPE tokenizer from an enumerable of text documents.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Training.BpeTrainer.ExportToJson(TokenVector.Text.ITokenizer,System.String)">
+            <summary>
+            Exports a trained tokenizer configuration to Hugging Face tokenizer.json format using Utf8JsonWriter.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Unicode.ByteLevelBpeHelper">
+            <summary>
+            High-performance GPT-2/GPT-4 style reversible byte-to-character mapping for byte-level BPE.
+            Maps every byte 0..255 to a distinct printable Unicode character so no byte information is lost.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Unicode.ByteLevelBpeHelper.ByteToChar(System.Byte)">
+            <summary>
+            Gets the mapped character for a given byte.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Unicode.ByteLevelBpeHelper.ByteToString(System.Byte)">
+            <summary>
+            Gets the mapped single-character string for a given byte (cached).
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Unicode.ByteLevelBpeHelper.TryCharToByte(System.Char,System.Byte@)">
+            <summary>
+            Converts a char back to byte if it exists in the byte-level mapping.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Unicode.ByteLevelBpeHelper.BytesToChars(System.ReadOnlySpan{System.Byte},System.Span{System.Char})">
+            <summary>
+            Converts a span of raw bytes to mapped characters zero-allocation into destination span.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Unicode.ByteLevelBpeHelper.CharsToBytes(System.ReadOnlySpan{System.Char},System.Span{System.Byte})">
+            <summary>
+            Converts a span of mapped characters back to raw bytes zero-allocation into destination span.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Unicode.ByteLevelBpeHelper.CharsToBytes(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Converts a mapped string back into raw UTF-8 bytes.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Unicode.SimdTextScanner">
+            <summary>
+            SIMD-accelerated text scanner for whitespace, delimiters, and character classification.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Unicode.SimdTextScanner.IndexOfFirstWhitespace(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Finds the index of the first whitespace character (' ', '\t', '\n', '\r') in a UTF-8 byte span.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Unicode.SimdTextScanner.IndexOfFirstNonWhitespace(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Finds the index of the first non-whitespace character in a UTF-8 byte span.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Unicode.SimdTextScanner.IsAllAscii(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Checks if a UTF-8 byte span is purely 7-bit ASCII using SIMD.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Unicode.SimdTextScanner.IsPunctuation(System.Char)">
+            <summary>
+            Checks if a character is a delimiter/punctuation symbol.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Unicode.UnicodeNormalizer">
+            <summary>
+            Zero-allocation and low-overhead Unicode normalization, accent handling, and case folding.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Unicode.UnicodeNormalizer.Normalize(System.ReadOnlySpan{System.Char},System.Text.NormalizationForm)">
+            <summary>
+            Normalizes a string or char span according to standard Unicode Normalization Form (NFC, NFD, NFKC, NFKD).
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Unicode.UnicodeNormalizer.IsAscii(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Checks if a char span contains only 7-bit ASCII characters.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Unicode.UnicodeNormalizer.ToLowerAsciiInPlace(System.Span{System.Char})">
+            <summary>
+            Performs in-place ASCII lowercasing if possible without allocation.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Unicode.UnicodeNormalizer.StripDiacritics(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Strips accents/diacritics from text using NFD decomposition (useful for BERT/uncased models).
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Unicode.UnicodeNormalizer.CleanText(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Cleans and removes control characters / replacement chars.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Vocab.Loaders.HuggingFaceJsonLoader">
+            <summary>
+            AOT-compliant JSON deserializer and loader for Hugging Face tokenizer.json configurations.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.Loaders.HuggingFaceJsonLoader.LoadFromFile(System.String)">
+            <summary>
+            Loads tokenizer configuration directly from a tokenizer.json file.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.Loaders.HuggingFaceJsonLoader.LoadFromJson(System.String)">
+            <summary>
+            Loads tokenizer configuration from JSON string.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Vocab.Loaders.LegacyBpeLoader">
+            <summary>
+            Loader for legacy GPT-2 / RoBERTa vocab.json and merges.txt files.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Vocab.Loaders.SentencePieceModelLoader">
+            <summary>
+            Loader for SentencePiece vocabulary and score files (.vocab / .tsv / custom models).
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Vocab.Loaders.TiktokenBpeLoader">
+            <summary>
+            High-speed loader for OpenAI .tiktoken files (base64-encoded token + integer rank format).
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.Loaders.TiktokenBpeLoader.Load(System.String)">
+            <summary>
+            Loads a BPE tokenizer from an OpenAI .tiktoken file or stream.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.Loaders.TiktokenBpeLoader.Load(System.IO.Stream)">
+            <summary>
+            Loads a BPE tokenizer from an OpenAI .tiktoken stream.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Vocab.MergesTable">
+            <summary>
+            High-performance merge ranking and fast integer pair lookup table for BPE tokenizers.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.MergesTable.TryGetMerge(System.Int32,System.Int32,System.Int32@,System.Int32@)">
+            <summary>
+            Gets the merge rank and merged target token ID for a pair of token IDs in O(1).
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.MergesTable.TryGetRank(System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Gets the merge rank for a pair of token IDs.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.MergesTable.TryGetRank(System.String,System.Int32@)">
+            <summary>
+            Gets the merge rank for a combined string pair "first second".
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.MergesTable.BindVocab(TokenVector.Text.Vocab.VocabTable)">
+            <summary>
+            Binds vocabulary to merge table, resolving string tokens to integer IDs for zero-alloc integer lookups.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Vocab.SpecialTokenSet">
+            <summary>
+            High-speed Special Token detector and manager with zero-allocation Trie-based substring scanner.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.SpecialTokenSet.Add(System.String,System.Int32)">
+            <summary>
+            Adds a special token to the set.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.SpecialTokenSet.IsSpecialId(System.Int32)">
+            <summary>
+            Checks if a token ID is a registered special token.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.SpecialTokenSet.TryGetSpecialId(System.ReadOnlySpan{System.Char},System.Int32@)">
+            <summary>
+            Checks if a string or char span matches a special token exactly.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.SpecialTokenSet.FindFirst(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Finds the earliest matching special token in a text span.
+            Returns (index, length, tokenId) or (-1, 0, -1) if none found.
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Vocab.UnigramModel">
+            <summary>
+            Vocabulary and score model for Unigram Tokenizers (SentencePiece / T5 / Gemma).
+            </summary>
+        </member>
+        <member name="T:TokenVector.Text.Vocab.VocabTable">
+            <summary>
+            High-performance bi-directional vocabulary table supporting zero-allocation Span lookups in .NET 8.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.VocabTable.TryGetId(System.ReadOnlySpan{System.Char},System.Int32@)">
+            <summary>
+            Zero-allocation lookup of token ID from a ReadOnlySpan of characters.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.VocabTable.TryGetId(System.String,System.Int32@)">
+            <summary>
+            Lookup token ID by string.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.VocabTable.GetIdOrDefault(System.ReadOnlySpan{System.Char},System.Int32)">
+            <summary>
+            Lookup token ID or return default fallback.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.VocabTable.GetToken(System.Int32)">
+            <summary>
+            Gets the string token for an ID.
+            </summary>
+        </member>
+        <member name="M:TokenVector.Text.Vocab.VocabTable.Contains(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Checks if a token exists in the vocabulary.
+            </summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Gpt4GeneratedRegex_0">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the Gpt4GeneratedRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Gpt4GeneratedRegex_0.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Gpt4GeneratedRegex_0.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Gpt4GeneratedRegex_0.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Gpt4GeneratedRegex_0.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Gpt4GeneratedRegex_0.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Gpt4GeneratedRegex_0.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Gpt4GeneratedRegex_0.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Gpt4GeneratedRegex_0.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Gpt2GeneratedRegex_1">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the Gpt2GeneratedRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Gpt2GeneratedRegex_1.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Gpt2GeneratedRegex_1.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Gpt2GeneratedRegex_1.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Gpt2GeneratedRegex_1.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Gpt2GeneratedRegex_1.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Gpt2GeneratedRegex_1.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Gpt2GeneratedRegex_1.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Gpt2GeneratedRegex_1.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.SimpleGeneratedRegex_2">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the SimpleGeneratedRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.SimpleGeneratedRegex_2.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.SimpleGeneratedRegex_2.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.SimpleGeneratedRegex_2.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.SimpleGeneratedRegex_2.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.SimpleGeneratedRegex_2.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.SimpleGeneratedRegex_2.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.SimpleGeneratedRegex_2.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.SimpleGeneratedRegex_2.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Utilities">
+            <summary>Helper methods used by generated <see cref="T:System.Text.RegularExpressions.Regex"/>-derived implementations.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout">
+            <summary>Default timeout value set in <see cref="T:System.AppContext"/>, or <see cref="F:System.Text.RegularExpressions.Regex.InfiniteMatchTimeout"/> if none was set.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_hasTimeout">
+            <summary>Whether <see cref="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout"/> is non-infinite.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.Utilities.IsWordChar(System.Char)">
+            <summary>Determines whether the character is part of the [\w] set.</summary>
+        </member>
+    </members>
+</doc>

@@ -1,4 +1,4 @@
-﻿## [Visual Studio / .NET]
+## [Visual Studio / .NET]
 bin/
 obj/
 *.user
@@ -21,11 +21,12 @@ bld/
 [Ll]og/
 
 ## NuGet
-*.nupkg
-*.snupkg
 *.nuget.props
 *.nuget.targets
-packages/
+!packages/
+!packages/*
+!dist/
+!dist/**
 
 ## Test Results
 TestResults/
