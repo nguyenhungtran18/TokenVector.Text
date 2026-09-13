@@ -1,13 +1,13 @@
 # TokenVector.Text
 
-[ 🇬🇧 English ](README.md) | [ 🇻🇳 Tiếng Việt ](README_VI.md)
+[ 🌌 TokenVector Hub ](https://github.com/nguyenhungtran18/TokenVector) | [ 🇬🇧 English ](README.md) | [ 🇻🇳 Tiếng Việt ](README_VI.md) | [ 📋 Test Report ](TEST_REPORT.md) | [ 📊 Benchmarks ](BENCHMARKS.md)
 
 [![.NET 8](https://img.shields.io/badge/.NET-8.0%20LTS-purple.svg)](https://dotnet.microsoft.com/)
 [![C# 12](https://img.shields.io/badge/C%23-12.0-blue.svg)](https://learn.microsoft.com/dotnet/csharp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/Tests-25%2F25%20Passed-brightgreen.svg)](TEST_REPORT.md)
 
-**`TokenVector.Text.dll`** is an ultra-high-throughput, zero-allocation Natural Language Processing (NLP), Tokenizer, and BPE Subword Trainer engine written in **C# 12 / .NET 8 LTS** optimized specifically for the **TokenVector Ecosystem** and .NET Native AOT compiler.
+**`TokenVector.Text.dll`** is an ultra-high-throughput, zero-allocation Natural Language Processing (NLP), Tokenizer, and BPE Subword Trainer engine written in **C# 12 / .NET 8 LTS** optimized specifically for the [**TokenVector Ecosystem**](https://github.com/nguyenhungtran18/TokenVector) and .NET Native AOT compiler.
 
 The engine leverages compile-time DFA state machines via C# 12 `[GeneratedRegex]`, zero-allocation doubly-linked list stackalloc merging, SIMD AVX2/AVX-512 text scanning, reversible byte-level BPE, Unigram Viterbi dynamic programming, incremental character-boundary-safe streaming decoding, BM25 & MinHash sparse search, and a direct in-process Zero-Copy tensor bridge to `TokenVector.Numerics.Core.NDArray<int>`.
 

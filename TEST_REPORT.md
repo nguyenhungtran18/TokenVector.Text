@@ -1,7 +1,7 @@
 # QUALITY ASSURANCE & PERFORMANCE TEST REPORT
 ## PROJECT: TOKENVECTOR.TEXT (HIGH-THROUGHPUT ZERO-ALLOCATION NLP & TOKENIZER ENGINE)
 
-[ 🇬🇧 English ](TEST_REPORT.md) | [ 🇻🇳 Tiếng Việt ](TEST_REPORT_VI.md)
+[ 🌌 TokenVector Hub ](https://github.com/nguyenhungtran18/TokenVector) | [ 🇬🇧 English ](TEST_REPORT.md) | [ 🇻🇳 Tiếng Việt ](TEST_REPORT_VI.md) | [ 📖 README ](README.md)
 
 **Report ID:** TR-TKV-TEXT-2026-V1.0.0-FINAL (ZERO-ALLOCATION BPE & NLP SUITE)  
 **Execution Date:** 13/09/2026  

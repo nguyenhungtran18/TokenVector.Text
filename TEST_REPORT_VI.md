@@ -1,7 +1,7 @@
 # BÁO CÁO KIỂM THỬ CHẤT LƯỢNG & BẢO CHỨNG HIỆU NĂNG
 ## DỰ ÁN: TOKENVECTOR.TEXT (ENGINE NLP, TOKENIZER & BPE ZERO-ALLOCATION)
 
-[ 🇬🇧 English ](TEST_REPORT.md) | [ 🇻🇳 Tiếng Việt ](TEST_REPORT_VI.md)
+[ 🌌 TokenVector Hub ](https://github.com/nguyenhungtran18/TokenVector) | [ 🇬🇧 English ](TEST_REPORT.md) | [ 🇻🇳 Tiếng Việt ](TEST_REPORT_VI.md) | [ 📖 README ](README_VI.md)
 
 **Mã báo cáo:** TR-TKV-TEXT-2026-V1.0.0-FINAL (ZERO-ALLOCATION BPE & NLP SUITE)  
 **Ngày thực hiện:** 13/09/2026  

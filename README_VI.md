@@ -1,13 +1,13 @@
 # TokenVector.Text
 
-[ 🇬🇧 English ](README.md) | [ 🇻🇳 Tiếng Việt ](README_VI.md)
+[ 🌌 TokenVector Hub ](https://github.com/nguyenhungtran18/TokenVector) | [ 🇬🇧 English ](README.md) | [ 🇻🇳 Tiếng Việt ](README_VI.md) | [ 📋 Báo cáo Kiểm thử ](TEST_REPORT_VI.md) | [ 📊 Benchmarks ](BENCHMARKS_VI.md)
 
 [![.NET 8](https://img.shields.io/badge/.NET-8.0%20LTS-purple.svg)](https://dotnet.microsoft.com/)
 [![C# 12](https://img.shields.io/badge/C%23-12.0-blue.svg)](https://learn.microsoft.com/dotnet/csharp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/Tests-25%2F25%20Passed-brightgreen.svg)](TEST_REPORT_VI.md)
 
-**`TokenVector.Text.dll`** là thư viện xử lý ngôn ngữ tự nhiên (NLP), Tokenizer engine và BPE Subword Trainer hiệu năng siêu cao, zero-allocation, được viết bằng **C# 12 / .NET 8 LTS** tối ưu riêng cho **Hệ sinh thái TokenVector** và trình biên dịch .NET Native AOT.
+**`TokenVector.Text.dll`** là thư viện xử lý ngôn ngữ tự nhiên (NLP), Tokenizer engine và BPE Subword Trainer hiệu năng siêu cao, zero-allocation, được viết bằng **C# 12 / .NET 8 LTS** tối ưu riêng cho [**Hệ sinh thái TokenVector**](https://github.com/nguyenhungtran18/TokenVector) và trình biên dịch .NET Native AOT.
 
 Thư viện ứng dụng máy trạng thái hữu hạn DFA lúc biên dịch qua C# 12 `[GeneratedRegex]`, thuật toán ghép cặp BPE trên danh sách liên kết kép `stackalloc`, tăng tốc phần cứng SIMD AVX2/AVX-512, ánh xạ byte-level BPE hai chiều, quy hoạch động Unigram Viterbi, giải mã streaming từng token an toàn ranh giới UTF-8, tìm kiếm thưa BM25 & MinHash, và cầu nối Zero-Copy trực tiếp sang `TokenVector.Numerics.Core.NDArray<int>`.
 
