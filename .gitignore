@@ -1,0 +1,43 @@
+﻿## [Visual Studio / .NET]
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+.idea/
+.vscode/
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+## NuGet
+*.nupkg
+*.snupkg
+*.nuget.props
+*.nuget.targets
+packages/
+
+## Test Results
+TestResults/
+[Tt]est[Rr]esult*
+*.trx
+*.coverage
+*.coveragexml
+
+## Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/
+env/

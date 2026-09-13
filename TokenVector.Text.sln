@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3D459B8C-52B1-4B54-ABF8-250F1DD4CAB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenVector.Text", "src\TokenVector.Text\TokenVector.Text.csproj", "{4D604720-1835-4044-A416-614692F478F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C8143473-64BA-49AB-8697-9C6DBBC77862}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenVector.Text.Tests", "tests\TokenVector.Text.Tests\TokenVector.Text.Tests.csproj", "{EE1032A9-E80B-4E64-A419-9BFC81C5B792}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "benchmarks", "benchmarks", "{C1220BB2-1836-44ED-A5C4-7F26F75E433D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenVector.Text.Benchmarks", "benchmarks\TokenVector.Text.Benchmarks\TokenVector.Text.Benchmarks.csproj", "{DA68B6F6-4E8F-4EF7-8CAC-CFB613A626F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenVector.Text.Cli", "src\TokenVector.Text.Cli\TokenVector.Text.Cli.csproj", "{48B17B74-B7A4-46F7-96DB-F47D6EA77076}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D604720-1835-4044-A416-614692F478F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D604720-1835-4044-A416-614692F478F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D604720-1835-4044-A416-614692F478F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D604720-1835-4044-A416-614692F478F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE1032A9-E80B-4E64-A419-9BFC81C5B792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE1032A9-E80B-4E64-A419-9BFC81C5B792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE1032A9-E80B-4E64-A419-9BFC81C5B792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE1032A9-E80B-4E64-A419-9BFC81C5B792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA68B6F6-4E8F-4EF7-8CAC-CFB613A626F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA68B6F6-4E8F-4EF7-8CAC-CFB613A626F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA68B6F6-4E8F-4EF7-8CAC-CFB613A626F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA68B6F6-4E8F-4EF7-8CAC-CFB613A626F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48B17B74-B7A4-46F7-96DB-F47D6EA77076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48B17B74-B7A4-46F7-96DB-F47D6EA77076}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48B17B74-B7A4-46F7-96DB-F47D6EA77076}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48B17B74-B7A4-46F7-96DB-F47D6EA77076}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4D604720-1835-4044-A416-614692F478F3} = {3D459B8C-52B1-4B54-ABF8-250F1DD4CAB1}
+		{EE1032A9-E80B-4E64-A419-9BFC81C5B792} = {C8143473-64BA-49AB-8697-9C6DBBC77862}
+		{DA68B6F6-4E8F-4EF7-8CAC-CFB613A626F9} = {C1220BB2-1836-44ED-A5C4-7F26F75E433D}
+		{48B17B74-B7A4-46F7-96DB-F47D6EA77076} = {3D459B8C-52B1-4B54-ABF8-250F1DD4CAB1}
+	EndGlobalSection
+EndGlobal
