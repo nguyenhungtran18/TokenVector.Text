@@ -9,6 +9,13 @@
     <LangVersion>12</LangVersion>
     <RootNamespace>TokenVector.Text.Cli</RootNamespace>
     <AssemblyName>tkv-text</AssemblyName>
+    <PackageId>TokenVector.Text.Cli</PackageId>
+    <Version>1.0.0</Version>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>tkv-text</ToolCommandName>
+    <Description>CLI tool for TokenVector.Text high-throughput tokenizer, BPE trainer, and text encoder/decoder.</Description>
+    <Authors>TokenVector Project Team</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>

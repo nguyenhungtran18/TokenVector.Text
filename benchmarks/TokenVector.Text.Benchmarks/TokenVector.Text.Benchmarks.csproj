@@ -8,6 +8,7 @@
     <Optimize>true</Optimize>
     <LangVersion>12</LangVersion>
     <RootNamespace>TokenVector.Text.Benchmarks</RootNamespace>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
