@@ -13,6 +13,32 @@ Thư viện ứng dụng máy trạng thái hữu hạn DFA lúc biên dịch qu
 
 ---
 
+## 🌌 Thành phần trong Hệ sinh thái TokenVector
+
+`TokenVector.Text` là một phân hệ cốt lõi trong [**Hệ sinh thái TokenVector**](https://github.com/nguyenhungtran18/TokenVector) — nền tảng tính toán khoa học và trí tuệ nhân tạo thế hệ mới được thiết kế từ gốc bằng C# 12 / .NET 8 LTS Native AOT.
+
+```mermaid
+graph TD
+    TV["🌌 TokenVector (Trung tâm Hệ sinh thái)<br/><i>Ngôn ngữ & Trình biên dịch AI</i>"]
+    TEXT["📝 TokenVector.Text<br/><b>NLP & Tokenizer Zero-Alloc</b>"]
+    NUM["⚡ TokenVector.Numerics<br/><b>Engine Tensor & Autograd</b>"]
+    DATA["📊 TokenVector.Data<br/><b>DataFrame Dạng Cột Arrow</b>"]
+
+    TV --> TEXT
+    TV --> NUM
+    TV --> DATA
+    TEXT -- "Cầu nối Zero-Copy Tensor (NDArray<int>)" --> NUM
+    DATA -- "Đưa dữ liệu bảng vào Tensor" --> NUM
+```
+
+Khám phá các thư viện thành phần khác trong **Hệ sinh thái TokenVector**:
+* 🌌 [**TokenVector (Kho trung tâm)**](https://github.com/nguyenhungtran18/TokenVector): Kho lưu trữ chính và môi trường thực thi tính toán nền tảng.
+* ⚡ [**TokenVector.Numerics**](https://github.com/nguyenhungtran18/TokenVector): Mảng đa chiều hiệu năng cao (`NDArray<T>`), Vi phân tự động (Autograd), Đại số tuyến tính tăng tốc SIMD và FFT.
+* 📊 [**TokenVector.Data**](https://github.com/nguyenhungtran18/TokenVector): Lưu trữ dạng cột chuẩn Apache Arrow, nạp CSV/JSON đa luồng và phép nối chuỗi thời gian `AsOfJoin`.
+* 📝 [**TokenVector.Text**](https://github.com/nguyenhungtran18/TokenVector.Text): Tokenizer BPE, WordPiece, Unigram độ trễ siêu thấp kèm bộ giải mã streaming an toàn.
+
+---
+
 ## 📋 Đặc Điểm Kiến Trúc Nổi Bật
 
 | Tính năng | TokenVector.Text (.NET 8 / C# 12) |

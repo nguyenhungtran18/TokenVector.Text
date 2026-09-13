@@ -13,6 +13,32 @@ The engine leverages compile-time DFA state machines via C# 12 `[GeneratedRegex]
 
 ---
 
+## 🌌 Part of the TokenVector Ecosystem
+
+`TokenVector.Text` is an integral component of the broader [**TokenVector Ecosystem**](https://github.com/nguyenhungtran18/TokenVector) — a next-generation, high-performance computational intelligence and AI runtime designed from the ground up in C# 12 / .NET 8 LTS Native AOT.
+
+```mermaid
+graph TD
+    TV["🌌 TokenVector (Main Hub)<br/><i>Unified AI Language & Compiler</i>"]
+    TEXT["📝 TokenVector.Text<br/><b>Zero-Alloc NLP & Tokenizers</b>"]
+    NUM["⚡ TokenVector.Numerics<br/><b>Tensor Engine & Autograd</b>"]
+    DATA["📊 TokenVector.Data<br/><b>Arrow Columnar DataFrame</b>"]
+
+    TV --> TEXT
+    TV --> NUM
+    TV --> DATA
+    TEXT -- "Zero-Copy Tensor Bridge (NDArray<int>)" --> NUM
+    DATA -- "Direct Feature Ingestion" --> NUM
+```
+
+Explore other core packages within the **TokenVector** suite:
+* 🌌 [**TokenVector (Core Hub)**](https://github.com/nguyenhungtran18/TokenVector): The primary monorepo and computational runtime engine.
+* ⚡ [**TokenVector.Numerics**](https://github.com/nguyenhungtran18/TokenVector): High-performance N-dimensional array (`NDArray<T>`), Automatic Differentiation (Autograd), Tiled SIMD Linear Algebra, and FFT.
+* 📊 [**TokenVector.Data**](https://github.com/nguyenhungtran18/TokenVector): Arrow-compliant columnar storage, high-throughput CSV/JSON ingestion, and high-frequency financial `AsOfJoin`.
+* 📝 [**TokenVector.Text**](https://github.com/nguyenhungtran18/TokenVector.Text): Ultra-low latency BPE, WordPiece, and Unigram tokenizer engine with streaming decoders.
+
+---
+
 ## 📋 Key Architectural Highlights
 
 | Feature | TokenVector.Text (.NET 8 / C# 12) |
