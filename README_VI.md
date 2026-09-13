@@ -1,5 +1,7 @@
 # TokenVector.Text (Tiếng Việt)
 
+[ 🇬🇧 English ](README.md) | [ 🇻🇳 Tiếng Việt ](README_VI.md) | [ 📋 Báo cáo Kiểm thử (25/25 Đạt) ](TEST_REPORT_VI.md) | [ 📊 Benchmarks ](BENCHMARKS_VI.md)
+
 **TokenVector.Text** là thư viện NLP, Tokenizer engine và BPE Subword Trainer hiệu năng cao, zero-allocation chính thức dành cho **Hệ sinh thái TokenVector**. Thư viện được phát triển bằng C# 12 / .NET 8 Native AOT, tăng tốc SIMD (AVX2/AVX-512) và C# 12 `[GeneratedRegex]`, đạt băng thông văn bản vượt trội (**37.35 MB/s**, **6.54 µs/câu**) và tích hợp tensor zero-copy trực tiếp với `TokenVector.Numerics.Core.NDArray<int>`.
 
 ---

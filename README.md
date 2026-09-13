@@ -5,6 +5,8 @@
 [![Native AOT](https://img.shields.io/badge/Native%20AOT-Ready-brightgreen.svg)](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
+[ 🇬🇧 English ](README.md) | [ 🇻🇳 Tiếng Việt ](README_VI.md) | [ 📋 Test Report (25/25 Passed) ](TEST_REPORT.md) | [ 📊 Benchmarks ](BENCHMARKS.md)
+
 **TokenVector.Text** is the official high-performance, zero-allocation NLP, Tokenizer, and BPE Trainer engine for the **TokenVector Ecosystem**. Designed in C# 12 / .NET 8 Native AOT with SIMD acceleration (AVX2/AVX-512) and C# 12 `[GeneratedRegex]`, it delivers blazing text bandwidth (37.35 MB/s, 6.54 µs/sentence) and seamless zero-copy tensor interop with `TokenVector.Numerics.Core.NDArray<int>`.
 
 ---
